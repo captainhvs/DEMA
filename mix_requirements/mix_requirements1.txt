@@ -1,0 +1,15 @@
+Process the vocal into a broadcast public address environment, and process the background audio into a broadcast environment. |
+
+Process the vocal into an in-car environment with clear speaking voice and obvious close-range reflections, and process the background audio into an in-car environmental sound with a sense of enclosure. |
+
+Process the vocal into an ethereal and soft dream sound effect with slight chorus and long reverb, and process the background audio into a dreamscape environment with delay and pitch drift. |
+
+Place both the vocal and background audio uniformly into a wide hall environment, enhancing spatial reflections and the sense of extension to create a strong large-space echo. |
+
+Process the vocal into an old movie dialogue effect that retains clarity, and process the background audio into an old movie environment enhanced with more obvious retro film noise and period noise floor. |
+
+Process the vocal into a telephone voice environment with communication bandwidth limitations, and process the background audio into a low-level, broken telephone voice environment. |
+
+Process the vocal into an open field effect with long-distance echo, and process the background audio into an open field effect with a shorter delay. |
+
+Keep the vocal clear before entering the water, then transition it into a muffled underwater sound effect with a sense of isolation after entering the water at the 5-second mark, and set the background audio to an underwater environmental sound effect. |

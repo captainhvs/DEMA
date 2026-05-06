@@ -1,0 +1,19 @@
+The vocal maintains a clear main subject with centered panning, while the background audio is slightly reduced in volume and uses surround mode to widen the space, creating an overall "vocal in front + environmental envelope" effect. |
+
+The vocal volume is moderately increased and kept centered, while the background audio is significantly reduced and placed in the right channel, creating an effect of unilateral environmental interference that highlights the main dialogue. |
+
+The vocal is slightly reduced and panned left, while the background audio is slightly enhanced and panned right, creating a sense of left-right separated dialogue/confrontation. |
+
+The vocal maintains normal volume but uses a left-right swing (auto-pan), while the background audio is reduced and centered, creating a subjective listening feel of dizziness or unstable consciousness. |
+
+The vocal is slightly enhanced and centered, while the background audio is also enhanced and uses surround, creating a highly immersive, environment-drowned effect. |
+
+The vocal is reduced and centered, while the background audio is maintained or enhanced and uses surround, depicting an environment-dominant scene where the vocal is masked. |
+
+The vocal is normally placed in the left channel, and the background audio is normally placed in the right channel, forming a dual-source structure with clear spatial positioning. |
+
+The vocal is slightly enhanced and centered, while the background audio is slightly reduced but uses a left-right swing (auto-pan), creating an unstable, dynamically changing environmental atmosphere. |
+
+Both the vocal and background audio are reduced, but the background audio uses surround, resulting in an overall soft listening feel and a wide space. |
+
+The vocal is significantly enhanced and centered, while the background audio is extremely low and centered, creating an extremely focused vocal effect. |
