@@ -1,6 +1,9 @@
-# Project Setup Guide
+# Results
 
-This document describes how to prepare the environment, launch the required background services, install the project dependencies, and download the required checkpoints.
+
+# Setup Guide
+
+This part describes how to prepare the environment, launch the required background services, install the project dependencies, and download the required checkpoints.
 
 ## 1. Prerequisites
 
