@@ -1,6 +1,6 @@
 # Project Setup Guide
 
-This document describes how to prepare the local runtime environment, launch the required background services, install the project dependencies, and download the required checkpoints.
+This document describes how to prepare the environment, launch the required background services, install the project dependencies, and download the required checkpoints.
 
 ## 1. Prerequisites
 
@@ -16,14 +16,6 @@ Before running this project, install and configure the following tools:
   - Documentation: <https://llamastack.github.io/>
   - GitHub: <https://github.com/llamastack/llama-stack>
 
-- **Python environment manager**: use either `uv` or `pip`.
-  - `uv`: <https://docs.astral.sh/uv/>
-  - `pip`: <https://pip.pypa.io/>
-
-- **Hugging Face CLI**, used for downloading model checkpoints.
-  - Documentation: <https://huggingface.co/docs/huggingface_hub/guides/cli>
-
-> Recommended Python version: Python 3.10+ unless your project dependencies require a stricter version.
 
 ## 2. Install Ollama
 
@@ -73,82 +65,17 @@ You can install Llama Stack using `uv`:
 uv pip install llama-stack
 ```
 
-Or using `pip`:
+
+
+
+## 5. Create the Main Project Environment
+
+From the project root directory, create the main virtual environment from `requirements.txt`. We recommend using uv to manage venv.
+
 
 ```bash
-pip install llama-stack
-```
-
-If your Llama Stack distribution requires starter dependencies explicitly, install them with:
-
-```bash
-uv run --with llama-stack llama stack list-deps starter | xargs -L1 uv pip install
-```
-
-## 5. Run Background Services
-
-This project expects both Ollama and Llama Stack to be running continuously.
-
-### Terminal 1: Ollama server
-
-```bash
-ollama serve
-```
-
-### Terminal 2: Llama Stack starter distribution
-
-```bash
-llama stack run starter
-```
-
-For newer Llama Stack versions where the starter distribution is the default, the following may also work:
-
-```bash
-llama stack run
-```
-
-### Optional: Run with a custom Ollama endpoint
-
-If Ollama is running on a non-default port, export the endpoint before starting Llama Stack:
-
-```bash
-export OLLAMA_URL=http://127.0.0.1:11434/v1
-llama stack run starter
-```
-
-If you run Ollama on a custom host/port, for example `127.0.0.1:11445`, start Ollama with:
-
-```bash
-export OLLAMA_HOST=127.0.0.1:11445
-ollama serve
-```
-
-Then start Llama Stack with:
-
-```bash
-export OLLAMA_URL=http://127.0.0.1:11445/v1
-llama stack run starter
-```
-
-## 6. Create the Main Project Environment
-
-From the project root directory, create the main virtual environment from `requirements.txt`.
-
-### Option A: using `uv`
-
-```bash
-uv venv .venv
+uv sync
 source .venv/bin/activate
-uv pip install -r requirements.txt
-```
-
-### Option B: using `pip`
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
 ```
 
 The main project Python path is:
@@ -157,13 +84,8 @@ The main project Python path is:
 ./.venv/bin/python
 ```
 
-On Windows, the equivalent path is:
 
-```text
-.\.venv\Scripts\python.exe
-```
-
-## 7. Create a Separate CLAP Environment
+## 6. Create a Separate CLAP Environment
 
 The CLAP dependencies should be installed in a separate virtual environment. Do **not** reuse `.venv`.
 
@@ -178,7 +100,6 @@ Create and install the CLAP dependencies:
 ```bash
 python -m venv .venv-clap
 source .venv-clap/bin/activate
-pip install --upgrade pip
 pip install -r requirements-clap.txt
 ```
 
@@ -188,26 +109,9 @@ The relative Python path for subprocess calls is:
 ./.venv-clap/bin/python
 ```
 
-Example usage in Python:
 
-```python
-import subprocess
 
-CLAP_PYTHON = "./.venv-clap/bin/python"
-
-subprocess.run(
-    [CLAP_PYTHON, "path/to/your_clap_script.py"],
-    check=True,
-)
-```
-
-On Windows, use:
-
-```text
-.\.venv-clap\Scripts\python.exe
-```
-
-## 8. Download Checkpoints
+## 7. Download Checkpoints
 
 Create a `ckpt/` directory in the project root:
 
@@ -225,7 +129,7 @@ ckpt/
     └── 630k-audioset-fusion-best.pt
 ```
 
-### 8.1 Download `nomic-embed-text-v1.5`
+### 7.1 Download `nomic-embed-text-v1.5`
 
 Hugging Face model page:
 
@@ -238,13 +142,8 @@ huggingface-cli download nomic-ai/nomic-embed-text-v1.5 \
   --local-dir ckpt/nomic-embed-text-v1.5
 ```
 
-If you only need the Ollama embedding model instead of local Hugging Face files, you can pull it with:
 
-```bash
-ollama pull nomic-embed-text:v1.5
-```
-
-### 8.2 Download `Qwen-Audio-Chat`
+### 7.2 Download `Qwen-Audio-Chat`
 
 Hugging Face model page:
 
@@ -257,32 +156,24 @@ huggingface-cli download Qwen/Qwen-Audio-Chat \
   --local-dir ckpt/Qwen-Audio-Chat
 ```
 
-### 8.3 Download CLAP checkpoint: `630k-audioset-fusion-best.pt`
+### 7.3 Download CLAP checkpoint: `630k-audioset-fusion-best.pt`
 
 Hugging Face file page:
 
 <https://huggingface.co/lukewys/laion_clap/blob/main/630k-audioset-fusion-best.pt>
 
-Direct download URL:
 
-<https://huggingface.co/lukewys/laion_clap/resolve/main/630k-audioset-fusion-best.pt>
 
-Download with `wget`:
-
-```bash
-mkdir -p ckpt/clap
-wget -O ckpt/clap/630k-audioset-fusion-best.pt \
-  https://huggingface.co/lukewys/laion_clap/resolve/main/630k-audioset-fusion-best.pt
-```
-
-Or download with Hugging Face CLI:
+Download with Hugging Face CLI:
 
 ```bash
 huggingface-cli download lukewys/laion_clap 630k-audioset-fusion-best.pt \
   --local-dir ckpt/clap
 ```
 
-## 9. Minimal Startup Checklist
+## 8. Minimal Startup Checklist
+
+This project expects both Ollama and Llama Stack to be running in different terminal continuously, you can manage them with tmux.
 
 After completing the setup, start the required services:
 
@@ -295,6 +186,7 @@ ollama serve
 # Terminal 2
 llama stack run starter
 ```
+
 
 Then activate the main project environment and run your project entrypoint:
 
@@ -309,9 +201,33 @@ When invoking CLAP-related scripts through a subprocess, use:
 ./.venv-clap/bin/python
 ```
 
+### Optional: Run with a custom Ollama endpoint
+
+If you run Ollama on a custom host/port, for example `127.0.0.1:11445`, start Ollama with:
+
+```bash
+export OLLAMA_HOST=127.0.0.1:11445
+ollama serve
+```
+
+If Ollama is running on a non-default port, export the endpoint before starting Llama Stack:
+
+```bash
+export OLLAMA_URL=http://127.0.0.1:11445/v1
+llama stack run starter
+```
+
 ## 10. Notes
 
 - Keep the main project environment and the CLAP environment separate to avoid dependency conflicts.
 - Make sure the checkpoint paths used in the code match the `ckpt/` layout shown above.
 - If Ollama is already managed by `systemd`, `tmux`, `screen`, or another process manager, do not start a second `ollama serve` instance on the same port.
 - If you use a non-default Ollama port, make sure both `OLLAMA_HOST` and `OLLAMA_URL` are configured consistently.
+
+
+
+
+
+
+
+

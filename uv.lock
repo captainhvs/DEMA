@@ -1093,7 +1093,7 @@ wheels = [
 ]
 
 [[package]]
-name = "forgemix"
+name = "DEMA"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
