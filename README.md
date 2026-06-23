@@ -1,4 +1,12 @@
-# Results
+
+
+<div align="center">
+
+## MixScene: A Benchmark for Text-Driven Audio Effects and Mixing on Multi-Stem Audio
+
+#### [Website](https://captainhvs.github.io/dema.io/)
+
+</div>
 
 
 # Setup Guide
@@ -40,7 +48,7 @@ In another terminal, verify that Ollama is available:
 ollama -v
 ```
 
-## 3. Register / Download Llama 3.3 with Ollama
+## 3. Download Llama 3.3 with Ollama
 
 Pull the Llama 3.3 model:
 
@@ -174,7 +182,7 @@ huggingface-cli download lukewys/laion_clap 630k-audioset-fusion-best.pt \
   --local-dir ckpt/clap
 ```
 
-## 8. Minimal Startup Checklist
+## 8. Startup Checklist
 
 This project expects both Ollama and Llama Stack to be running in different terminal continuously, you can manage them with tmux.
 
